@@ -56,8 +56,6 @@ app.use("/api/uploads", express.static("public/uploads"));
 
 
 
-
-
 // API routes
 // Auth
 app.post('/api/login', loginUser);
@@ -97,10 +95,10 @@ app.use("/api/special", specialRouter);
 
 
 // for frontend code rendering
-app.use(express.static(path.join(__dirname, '/client/dist')));
+app.use(express.static(path.join(__dirname, '/frontend/dist')));
 
 app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "client", "dist", "index.html"))
+    res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"))
 })
 
 // Error handling
