@@ -11,7 +11,6 @@ export const StoreProvider = ({ children }) => {
     const [loggedUser, setLoggedUser] = useState(null);
     const location = useLocation();
 
-
     const [currentlyLoggedUser, setCurrentlyLoggedUser] = useState(false);
     const [socket, setSocket] = useState(null);
     const [loggedUserData, setLoggedUserData] = useState(null);
