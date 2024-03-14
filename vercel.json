@@ -12,6 +12,10 @@
             "dest": "/public/uploads/$1"
         },
         {
+            "src": "/frontend/dist/(.*)",
+            "dest": "/frontend/dist/$1"
+        },
+        {
             "src": "/(.*)",
             "dest": "/app.js"
         }
