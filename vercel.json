@@ -1,13 +1,16 @@
 {
-    "includeFiles": [
-        "frontend/**",
-        "public/**"
-    ],
-
-    "rewrites": [
+    "routes": [
         {
-            "source": "/(.*)",
-            "destination": "app.js"
+            "src": "/app/uploads/(.*)",
+            "dest": "/public/uploads/(.*)"
+        },
+        {
+            "src": "/api/(.*)",
+            "dest": "app.js"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/frontend/dist/index.html"
         }
     ]
 }
