@@ -11,6 +11,7 @@ export const StoreProvider = ({ children }) => {
     const [loggedUser, setLoggedUser] = useState(null);
     const location = useLocation();
 
+
     const [currentlyLoggedUser, setCurrentlyLoggedUser] = useState(false);
     const [socket, setSocket] = useState(null);
     const [loggedUserData, setLoggedUserData] = useState(null);
@@ -187,6 +188,15 @@ export const StoreProvider = ({ children }) => {
 
 
     const toggleFollow = async (userIdToFollow) => {
+
+        const isUserLogged = await getUserId();
+
+        if (!isUserLogged) {
+            toast.error("Login to continue.");
+            navigate(`/login?callback=${location.pathname}`)
+            return;
+        }
+
 
         try {
             const { data } = await toggleFollowAPI(userIdToFollow);

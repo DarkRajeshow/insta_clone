@@ -23,7 +23,6 @@ router.get('/:postId', async (req, res) => {
         return res.json({ success: false, status: "Something went wrong." });
     }
 });
-
 // Route to add a comment to a post
 router.post('/:postId', async (req, res) => {
     try {
@@ -35,8 +34,10 @@ router.post('/:postId', async (req, res) => {
             return res.json({ success: false, status: "Login to continue." });
         }
 
+        const userId = await getUserId(req.cookies.jwt);
+
         const comment = await Comment.create({
-            author: req.userId,
+            author: userId,
             post: postId,
             text: text
         });
@@ -59,6 +60,7 @@ router.post('/:postId', async (req, res) => {
         return res.json({ success: false, status: "Something went wrong." });
     }
 });
+
 
 // Route to delete a comment
 router.delete('/:commentId', async (req, res) => {
