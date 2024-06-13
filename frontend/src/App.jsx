@@ -96,7 +96,7 @@ function App() {
   }
 
   useEffect(() => {
-    const memoizedSocket = io(import.meta.env.VITE_REACT_APP_SERVER_URL);
+    const memoizedSocket = io();
     setSocket(memoizedSocket);
 
     return () => memoizedSocket.close();
