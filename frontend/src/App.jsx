@@ -96,7 +96,7 @@ function App() {
   }
 
   useEffect(() => {
-    const memoizedSocket = io('https://insta-clone-v6nq.onrender.com');
+    const memoizedSocket = io();
     setSocket(memoizedSocket);
 
     return () => memoizedSocket.close();

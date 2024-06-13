@@ -32,7 +32,6 @@ import connectToMongo from './utility/connectToMongo.js';
 import { createServer } from 'http'
 import socketIo from './connection/socket.js';
 import cookieParser from 'cookie-parser';
-import setupProxy from './utility/setupProxy.js';
 
 // Configuring environment variables
 dotenv.config();
@@ -55,16 +54,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use("/api/uploads", express.static("public/uploads"));
 
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*"); // Update this with your exact origins
-    res.header(
-        "Access-Control-Allow-Headers",
-        "Origin, X-Requested-With, Content-Type, Accept"
-    );
-    next();
-});
 
-setupProxy(app);
 
 // API routes
 // Auth
@@ -132,7 +122,7 @@ socketIo(httpServer);
 
 // Starting the server
 httpServer.listen(PORT, () => {
-    console.log("Server is running on :dev: ->  http://localhost:8080/");
+    console.log("Server is running on : http://localhost:8080/");
 });
 
 // Exporting the app
