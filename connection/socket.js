@@ -6,7 +6,12 @@ export default function socketIo(server) {
 
     const onlineUsers = {};
 
-    const io = new Server(server);
+    const io = new Server(server, {
+        cors: {
+            origin: ["http://localhost:8080", "https://desigram.vercel.app"],
+            methods: ["GET", "POST"]
+        }
+    });
 
     io.on('connection', (socket) => {
         socket.on('online', (userId) => {

@@ -32,6 +32,7 @@ import connectToMongo from './utility/connectToMongo.js';
 import { createServer } from 'http'
 import socketIo from './connection/socket.js';
 import cookieParser from 'cookie-parser';
+import setupProxy from './utility/setupProxy.js';
 
 // Configuring environment variables
 dotenv.config();
@@ -54,7 +55,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use("/api/uploads", express.static("public/uploads"));
 
-
+setupProxy(app);
 
 // API routes
 // Auth
@@ -122,7 +123,7 @@ socketIo(httpServer);
 
 // Starting the server
 httpServer.listen(PORT, () => {
-    console.log("Server is running : " + PORT);
+    console.log("Server is running on :dev: ->  http://localhost:8080/");
 });
 
 // Exporting the app
