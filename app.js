@@ -55,6 +55,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use("/api/uploads", express.static("public/uploads"));
 
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*"); // Update this with your exact origins
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept"
+    );
+    next();
+});
+
 setupProxy(app);
 
 // API routes

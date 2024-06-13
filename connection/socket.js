@@ -9,7 +9,9 @@ export default function socketIo(server) {
     const io = new Server(server, {
         cors: {
             origin: ["http://localhost:8080", "https://desigram.vercel.app"],
-            methods: ["GET", "POST"]
+            methods: ["GET", "POST"],
+            allowedHeaders: ["my-custom-header"],
+            credentials: true
         }
     });
 
